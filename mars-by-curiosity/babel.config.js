@@ -3,9 +3,22 @@ module.exports = function (api) {
   return {
     presets: ["babel-preset-expo", "module:metro-react-native-babel-preset"],
     plugins: [
+      // [require.resolve("babel-plugin-module-resolver"), {root: ["."]}],
       [
-        require.resolve("babel-plugin-module-resolver"),
-        {root: ["./src"]},
+        "module-resolver",
+        {
+          extensions: [
+            ".js",
+            ".jsx",
+            ".ts",
+            ".tsx",
+            ".android.js",
+            ".android.tsx",
+            ".ios.js",
+            ".ios.tsx",
+          ],
+          root: ["."],
+        },
       ],
     ],
   };
