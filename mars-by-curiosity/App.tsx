@@ -1,34 +1,28 @@
-import {useState} from "react";
 import {StatusBar} from "expo-status-bar";
-import {Text, SafeAreaView} from "react-native";
-import {globalStyles} from "src/globalStyles";
-import * as Font from "expo-font";
+import {SafeAreaView} from "react-native";
+import {useFonts} from "expo-font";
 import AppLoading from "expo-app-loading";
-
-const fonts = () => Font.loadAsync({
-  "dosis-light": require("assets/fonts/Dosis-ExtraLight.ttf"),
-  "dosis-bold": require("assets/fonts/Dosis-SemiBold.ttf"),
-});
+import {globalStyles} from "src/globalStyles";
+// import {MainScreen} from "src/screens/selectionScreen/SelectionScreen";
+import {Navigate} from "src/navigate/Navigate";
 
 export default function App() {
-  const [isFontLoaded, setIsFontLoaded] = useState(false);
+  const [fontsLoaded] = useFonts({
+    DosisLight: require("assets/fonts/Dosis-ExtraLight.ttf"),
+    DosisBold: require("assets/fonts/Dosis-SemiBold.ttf"),
+  });
 
-  if (isFontLoaded) {
+  if (fontsLoaded) {
     return (
-      <SafeAreaView style={globalStyles.container}>
-        <Text style={globalStyles.title}>
-          Hello111222!!!!
-        </Text>
-        <StatusBar style="auto" />
-      </SafeAreaView>
+      // <SafeAreaView style={globalStyles.container}>
+      <Navigate />
+    // {/* <MainScreen /> */}
+    // <StatusBar style="auto" />
+      // </SafeAreaView>
     );
   } else {
     return (
-      <AppLoading
-        startAsync={fonts}
-        onFinish={() => setIsFontLoaded(true)}
-        onError={console.warn}
-      />
+      <AppLoading />
     );
   }
 }
