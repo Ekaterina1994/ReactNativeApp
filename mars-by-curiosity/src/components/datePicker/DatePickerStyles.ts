@@ -36,9 +36,15 @@ export const DatePickerStyles = StyleSheet.create({
     fontFamily: "DosisBold",
     fontSize: 18,
   },
-  // dropdownGender: {
-  //   marginHorizontal: 10,
-  //   width: "50%",
-  //   marginBottom: 15,
-  // },
+  inputWrapper: {
+    position: "relative",
+    display: "flex",
+  },
+  icon: {
+    position: "absolute",
+    width: 24,
+    height: 24,
+    top: 18,
+    right: 18,
+  },
 });

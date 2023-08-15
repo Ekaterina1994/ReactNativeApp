@@ -1,7 +1,8 @@
 import {useState} from "react";
-import {StyleSheet, Text, View, Image} from "react-native";
+import {Text, View, TouchableOpacity} from "react-native";
 import {Dropdown} from "react-native-element-dropdown";
 import {DropdownStyles} from "./DropdownStyles";
+import {DropdownIcon} from "src/assets/icons/dropdown";
 
 const data = [
   {label: "Item 1", value: "1"},
@@ -22,28 +23,30 @@ export const DropdownComponent = () => {
       <Text style={DropdownStyles.label}>
         Rover Camera
       </Text>
-      <Dropdown
-        style={DropdownStyles.dropdown}
-        placeholderStyle={DropdownStyles.placeholderStyles}
-        selectedTextStyle={DropdownStyles.selectedTextStyle}
-        inputSearchStyle={DropdownStyles.inputSearchStyle}
-        iconStyle={DropdownStyles.iconStyle}
-        iconColor="black"
-        data={data}
-        search
-        maxHeight={300}
-        labelField="label"
-        valueField="value"
-        placeholder={value}
-        searchPlaceholder="Search..."
-        value={value}
-        onChange={item => {
-          setValue(item.value);
-        }}
-        // renderLeftIcon={() => (
-        //   <Image source={require("assets/icons/dropdown.svg")} />
-        // )}
-      />
+      <TouchableOpacity
+        style={DropdownStyles.inputWrapper}
+      >
+        <Dropdown
+          style={DropdownStyles.dropdown}
+          placeholderStyle={DropdownStyles.placeholderStyles}
+          selectedTextStyle={DropdownStyles.selectedTextStyle}
+          inputSearchStyle={DropdownStyles.inputSearchStyle}
+          iconStyle={DropdownStyles.defaultIcon}
+          iconColor="black"
+          data={data}
+          search
+          maxHeight={300}
+          labelField="label"
+          valueField="value"
+          placeholder={value}
+          searchPlaceholder="Search..."
+          value={value}
+          onChange={item => {
+            setValue(item.value);
+          }}
+        />
+        {/* <DropdownIcon /> */}
+      </TouchableOpacity>
     </View>
   );
 };

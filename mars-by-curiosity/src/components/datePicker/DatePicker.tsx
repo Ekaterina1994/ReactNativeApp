@@ -1,48 +1,49 @@
 import {useState} from "react";
-import {Text, View, Image, Button, TouchableOpacity, Pressable, TextInput, Platform} from "react-native";
+import {Text, View, TouchableOpacity, TextInput, Platform} from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import {DatePickerStyles} from "src/components/datePicker/DatePickerStyles";
-import {getCurrentDate} from "src/utils/getDate";
-import {SvgUri} from "react-native-svg";
+import {currentDate, getDate} from "src/utils/getDate";
+import {CalendarIcon} from "src/assets/icons/calendar";
 
 export const DatePickerComponent = () => {
   const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
-  const [text, setText] = useState(getCurrentDate);
+  const [text, setText] = useState(currentDate);
 
-  const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate || date;
+  const onChange = (event, selectDate) => {
+    const selectedDate = selectDate || date;
     setShow(Platform.OS === "ios");
-    setDate(currentDate);
+    setDate(selectedDate);
 
-    const tempDate = new Date(currentDate);
-    const fDate = tempDate.getDate() + "/" + (tempDate.getMonth() + 1) + "/" + tempDate.getFullYear();
-    setText(fDate);
+    const formattedDate = getDate(selectedDate);
+    setText(formattedDate);
   };
 
   const showMode = () => {
     setShow(true);
   };
 
-
   return (
     <View style={DatePickerStyles.container}>
       <Text style={DatePickerStyles.label}>
         Date
       </Text>
-      <TouchableOpacity onPress={() => showMode()}>
-        <TextInput
-          style={DatePickerStyles.input}
-          placeholder={getCurrentDate}
-          value={text}
-          editable={false}
-        />
-        <SvgUri
-          width="24"
-          height="24"
-          uri="assets/icons/calendar.svg"
-        />
-      </TouchableOpacity>
+      <View style={DatePickerStyles.inputWrapper}>
+        <TouchableOpacity
+          style={DatePickerStyles.inputWrapper}
+          onPress={() => showMode()}
+        >
+          <TextInput
+            style={DatePickerStyles.input}
+            placeholder={currentDate}
+            value={text}
+            editable={false}
+          />
+          <View style={DatePickerStyles.icon}>
+            <CalendarIcon />
+          </View>
+        </TouchableOpacity>
+      </View>
       {show && (
         <DateTimePicker
           testID="dateTimePicker"

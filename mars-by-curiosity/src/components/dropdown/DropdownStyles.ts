@@ -13,16 +13,15 @@ export const DropdownStyles = StyleSheet.create({
     // opacity: 0.5,
     padding: 18,
   },
-  iconStyle: {
+  defaultIcon: {
     width: 24,
     height: 24,
-    // stroke: "#000000",
+    // display: "none",
   },
   inputSearchStyle: {
     height: 40,
     fontSize: 16,
   },
-  // container: {flex: 1},
   label: {
     marginBottom: 7,
     fontSize: 14,
@@ -36,9 +35,15 @@ export const DropdownStyles = StyleSheet.create({
     fontFamily: "DosisBold",
     fontSize: 18,
   },
-  // dropdownGender: {
-  //   marginHorizontal: 10,
-  //   width: "50%",
-  //   marginBottom: 15,
-  // },
+  inputWrapper: {
+    position: "relative",
+    display: "flex",
+  },
+  icon: {
+    position: "absolute",
+    width: 24,
+    height: 24,
+    top: 18,
+    right: 18,
+  },
 });

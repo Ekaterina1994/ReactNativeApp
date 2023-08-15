@@ -1,55 +1,54 @@
-const currentDate = new Date();
-const currentYear = "" + currentDate.getFullYear();
-let currentMonth = "" + (currentDate.getMonth() + 1);
-let currentDay = "" + currentDate.getDate();
+/**
+ * Return the selected date in format "dd Mon, yyyy"
+ */
+export const getDate = (date: Date) => {
+  const year = "" + date.getFullYear();
+  const day = "" + date.getDate();
+  let month = "" + (date.getMonth() + 1);
 
-switch (currentMonth) {
-  case "1":
-    currentMonth = "Jan";
-    break;
-  case "2":
-    currentMonth = "Feb";
-    break;
-  case "3":
-    currentMonth = "Mar";
-    break;
-  case "4":
-    currentMonth = "Apr";
-    break;
-  case "5":
-    currentMonth = "May";
-    break;
-  case "6":
-    currentMonth = "Jun";
-    break;
-  case "7":
-    currentMonth = "Jul";
-    break;
-  case "8":
-    currentMonth = "Aug";
-    break;
-  case "9":
-    currentMonth = "Sep";
-    break;
-  case "10":
-    currentMonth = "Oct";
-    break;
-  case "11":
-    currentMonth = "Nov";
-    break;
-  case "12":
-    currentMonth = "Dec";
-    break;
-}
-if (currentMonth.length < 2) {
-  currentMonth = `0${currentMonth}`;
-}
+  switch (month) {
+    case "1":
+      month = "Jan";
+      break;
+    case "2":
+      month = "Feb";
+      break;
+    case "3":
+      month = "Mar";
+      break;
+    case "4":
+      month = "Apr";
+      break;
+    case "5":
+      month = "May";
+      break;
+    case "6":
+      month = "Jun";
+      break;
+    case "7":
+      month = "Jul";
+      break;
+    case "8":
+      month = "Aug";
+      break;
+    case "9":
+      month = "Sep";
+      break;
+    case "10":
+      month = "Oct";
+      break;
+    case "11":
+      month = "Nov";
+      break;
+    case "12":
+      month = "Dec";
+      break;
+  }
 
-if (currentDay.length < 2) {
-  currentDay = `0${currentDay}`;
-}
+  return `${day} ${month}, ${year}`;
+};
 
 /**
- * Return current date yyyy-mm-dd
+ * Return current date in format "dd Mon, yyyy"
  */
-export const getCurrentDate = `${currentDay} ${currentMonth}, ${currentYear}`;
+export const currentDate = getDate(new Date());
