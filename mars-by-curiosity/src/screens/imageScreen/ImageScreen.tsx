@@ -1,5 +1,5 @@
 import {Text, View, ImageBackground, SafeAreaView} from "react-native";
-import {SelectionScreenStyles} from "src/screens/selectionScreen/SelectionScreenStyles";
+import {ImageScreenStyles} from "src/screens/imageScreen/ImageScreenStyles";
 import {NavigationProp} from "@react-navigation/native";
 import {ButtonExplore} from "src/components/button/Button";
 
@@ -15,21 +15,10 @@ export const ImageScreen = ({navigation}: any) => {
   };
 
   return (
-    <View style={SelectionScreenStyles.container}>
-      <Text style={SelectionScreenStyles.title}>
+    <View style={ImageScreenStyles.container}>
+      <Text>
         Select Camera and Date
       </Text>
-      <View style={SelectionScreenStyles.container}>
-        <Text>
-          Hi
-        </Text>
-        <Text>
-          Hi
-        </Text>
-        <Text>
-          Hi
-        </Text>
-      </View>
     </View>
   );
 };

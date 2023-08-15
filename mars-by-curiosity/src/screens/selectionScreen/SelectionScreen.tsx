@@ -1,4 +1,4 @@
-import {Text, View, ImageBackground} from "react-native";
+import {Text, View, ImageBackground, Image} from "react-native";
 import {SelectionScreenStyles} from "src/screens/selectionScreen/SelectionScreenStyles";
 import {NavigationProp} from "@react-navigation/native";
 import {ButtonExplore} from "src/components/button/Button";
@@ -28,6 +28,12 @@ export const SelectionScreen = ({navigation}: any) => {
         <View style={SelectionScreenStyles.wrapper}>
           <DropdownComponent />
           <DatePickerComponent />
+          {/* <Image
+            style={{width: "100%", height: "50%"}}
+            // eslint-disable-next-line max-len
+            source={{uri:
+"http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/01004/opgs/edr/fcam/FLB_486615455EDR_F0481570FHAZ00323M_.JPG"}}
+          /> */}
           <ButtonExplore
             title="Explore"
             onPress={loadScene}
