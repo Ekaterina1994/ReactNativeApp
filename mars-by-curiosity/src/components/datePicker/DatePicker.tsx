@@ -4,11 +4,13 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import {DatePickerStyles} from "src/components/datePicker/DatePickerStyles";
 import {currentDate, getDate} from "src/utils/getDate";
 import {CalendarIcon} from "src/assets/icons/calendar";
+import {useDateCamera} from "src/context/Context";
 
 export const DatePickerComponent = () => {
-  const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
   const [text, setText] = useState(currentDate);
+
+  const {date, setDate} = useDateCamera();
 
   const onChange = (event, selectDate) => {
     const selectedDate = selectDate || date;

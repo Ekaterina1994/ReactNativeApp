@@ -3,6 +3,9 @@ import {CameraScreenStyles} from "src/screens/cameraScreen/CameraScreenStyles";
 import {NavigationProp} from "@react-navigation/native";
 import {BackIcon} from "src/assets/icons/back";
 import {ImageGallery} from "src/components/imageGallery/ImageGallery";
+import {useRoverCamera} from "src/context/Context";
+import {useDateCamera} from "src/context/Context";
+import {getDate} from "src/utils/getDate";
 
 interface RouterProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -11,6 +14,9 @@ interface RouterProps {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const CameraScreen = ({navigation}: any) => {
+  const {camera} = useRoverCamera();
+  const {date} = useDateCamera();
+
   const loadScene = () => {
     navigation.navigate("ImageScreen");
   };
@@ -22,10 +28,10 @@ export const CameraScreen = ({navigation}: any) => {
           <BackIcon />
           <View style={CameraScreenStyles.titleWrapper}>
             <Text style={CameraScreenStyles.title}>
-              Front Hazard Avoidance Camera
+              {camera}
             </Text>
             <Text style={CameraScreenStyles.text}>
-              12 Oct, 2022
+              {`${getDate(date)}`}
             </Text>
           </View>
         </View>

@@ -1,8 +1,7 @@
-import {useState} from "react";
 import {Text, View, TouchableOpacity} from "react-native";
 import {Dropdown} from "react-native-element-dropdown";
 import {DropdownStyles} from "./DropdownStyles";
-import {DropdownIcon} from "src/assets/icons/dropdown";
+import {useRoverCamera} from "src/context/Context";
 
 const data = [
   {label: "Item 1", value: "1"},
@@ -16,7 +15,7 @@ const data = [
 ];
 
 export const DropdownComponent = () => {
-  const [value, setValue] = useState("Front Hazard Avoidance Camera");
+  const {camera, setCamera} = useRoverCamera();
 
   return (
     <View style={DropdownStyles.container}>
@@ -38,11 +37,11 @@ export const DropdownComponent = () => {
           maxHeight={300}
           labelField="label"
           valueField="value"
-          placeholder={value}
+          placeholder={camera}
           searchPlaceholder="Search..."
-          value={value}
+          value={camera}
           onChange={item => {
-            setValue(item.value);
+            setCamera(item.value);
           }}
         />
         {/* <DropdownIcon /> */}

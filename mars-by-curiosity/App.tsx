@@ -1,10 +1,9 @@
-import {StatusBar} from "expo-status-bar";
-import {SafeAreaView} from "react-native";
+import {useState} from "react";
 import {useFonts} from "expo-font";
 import AppLoading from "expo-app-loading";
-import {globalStyles} from "src/globalStyles";
-// import {MainScreen} from "src/screens/selectionScreen/SelectionScreen";
 import {Navigate} from "src/navigate/Navigate";
+import {RoverCameraContext, DateCameraContext} from "src/context/Context";
+import {currentDate} from "src/utils/getDate";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -12,13 +11,16 @@ export default function App() {
     DosisBold: require("assets/fonts/Dosis-SemiBold.ttf"),
   });
 
+  const [camera, setCamera] = useState("Front Hazard Avoidance Camera");
+  const [date, setDate] = useState(new Date());
+
   if (fontsLoaded) {
     return (
-      // <SafeAreaView style={globalStyles.container}>
-      <Navigate />
-    // {/* <MainScreen /> */}
-    // <StatusBar style="auto" />
-      // </SafeAreaView>
+      <RoverCameraContext.Provider value={{camera, setCamera}}>
+        <DateCameraContext.Provider value={{date, setDate}}>
+          <Navigate />
+        </DateCameraContext.Provider>
+      </RoverCameraContext.Provider>
     );
   } else {
     return (
