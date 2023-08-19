@@ -1,17 +1,14 @@
-import {Text, View, ImageBackground, Image} from "react-native";
+import {Text, View, ImageBackground} from "react-native";
 import {SelectionScreenStyles} from "src/screens/selectionScreen/SelectionScreenStyles";
-import {NavigationProp} from "@react-navigation/native";
 import {ButtonExplore} from "src/components/button/Button";
 import {DropdownComponent} from "src/components/dropdown/Dropdown";
 import {DatePickerComponent} from "src/components/datePicker/DatePicker";
+import type {NativeStackScreenProps} from "@react-navigation/native-stack";
+import {RootStackParamList} from "src/navigate/Navigate";
 
-interface RouterProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  navigation: NavigationProp<any, any>;
-}
+type Props = NativeStackScreenProps<RootStackParamList, "SelectionScreen">;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const SelectionScreen = ({navigation}: any) => {
+export const SelectionScreen = ({navigation}: Props) => {
   const loadScene = () => {
     navigation.navigate("CameraScreen");
   };
@@ -28,12 +25,6 @@ export const SelectionScreen = ({navigation}: any) => {
         <View style={SelectionScreenStyles.wrapper}>
           <DropdownComponent />
           <DatePickerComponent />
-          {/* <Image
-            style={{width: "100%", height: "50%"}}
-            // eslint-disable-next-line max-len
-            source={{uri:
-"http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/01004/opgs/edr/fcam/FLB_486615455EDR_F0481570FHAZ00323M_.JPG"}}
-          /> */}
           <ButtonExplore
             title="Explore"
             onPress={loadScene}

@@ -3,23 +3,24 @@ import {Dimensions, StyleSheet} from "react-native";
 export const ImageScreenStyles = StyleSheet.create({
   container: {
     display: "flex",
+    width: "100%",
     height: "100%",
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#000000",
-    padding: 16,
-  },
-  headerWrapper: {
-    paddingTop: 42,
-    paddingHorizontal: 26,
+    paddingHorizontal: 16,
   },
   header: {
     display: "flex",
     width: "100%",
     flexDirection: "row",
-    justifyContent: "space-between",
+    paddingHorizontal: 26,
+    paddingTop: 42,
+    paddingBottom: 16,
+    justifyContent: "center",
     alignItems: "center",
-    height: 88,
+    height: 104,
   },
   titleWrapper: {
     display: "flex",
@@ -42,8 +43,8 @@ export const ImageScreenStyles = StyleSheet.create({
     fontSize: 18,
   },
   image: {
-    width: (Dimensions.get("window").width) - 32,
-    height: (Dimensions.get("window").height),
+    width: (Dimensions.get("window").width) - 16,
+    height: (Dimensions.get("window").height) - 104,
     borderRadius: 8,
   },
 });

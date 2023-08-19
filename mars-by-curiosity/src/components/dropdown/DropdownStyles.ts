@@ -10,13 +10,11 @@ export const DropdownStyles = StyleSheet.create({
     height: 60,
     backgroundColor: "rgba(255, 255, 255, 0.5)",
     borderRadius: 10,
-    // opacity: 0.5,
     padding: 18,
   },
   defaultIcon: {
     width: 24,
     height: 24,
-    // display: "none",
   },
   inputSearchStyle: {
     height: 40,

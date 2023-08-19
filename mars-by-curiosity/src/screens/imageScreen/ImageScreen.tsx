@@ -1,23 +1,21 @@
 import {useState, useEffect} from "react";
 import {Text, View, Image, TouchableOpacity} from "react-native";
 import {ImageScreenStyles} from "src/screens/imageScreen/ImageScreenStyles";
-import {NavigationProp} from "@react-navigation/native";
 import {BackIconWhite} from "src/assets/icons/backWhite";
 import {ShareIcon} from "src/assets/icons/share";
+import type {NativeStackScreenProps} from "@react-navigation/native-stack";
+import {RootStackParamList} from "src/navigate/Navigate";
 
-interface RouterProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  navigation: NavigationProp<any, any>;
-}
+type Props = NativeStackScreenProps<RootStackParamList, "ImageScreen">;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const ImageScreen = (props: any, {navigation}: any) => {
+export const ImageScreen = (props: any) => {
   // const {id} = route.params;
   // const ID = `${id}`;
   // const {url} = route.params;
 
   const loadScene = () => {
-    navigation.navigate("CameraScreen");
+    props.navigation.navigate("CameraScreen");
   };
 
   const [data, setData] = useState([]);
@@ -38,29 +36,25 @@ export const ImageScreen = (props: any, {navigation}: any) => {
 
   return (
     <View style={ImageScreenStyles.container}>
-      <View style={ImageScreenStyles.headerWrapper}>
-        <View style={ImageScreenStyles.header}>
-          <TouchableOpacity onPress={loadScene}>
-            <BackIconWhite />
-          </TouchableOpacity>
+      <View style={ImageScreenStyles.header}>
+        <TouchableOpacity onPress={loadScene}>
+          <BackIconWhite />
+        </TouchableOpacity>
 
-          <View style={ImageScreenStyles.titleWrapper}>
-            <Text style={ImageScreenStyles.title}>
-              Photo ID
-            </Text>
-            <Text style={ImageScreenStyles.text}>
-              {props.route.params.id}
-            </Text>
-          </View>
-          <ShareIcon />
+        <View style={ImageScreenStyles.titleWrapper}>
+          <Text style={ImageScreenStyles.title}>
+            Photo ID
+          </Text>
+          <Text style={ImageScreenStyles.text}>
+            {props.route.params.id}
+          </Text>
         </View>
+        <ShareIcon />
       </View>
-      <View style={ImageScreenStyles.imageWrapper}>
-        <Image
-          style={ImageScreenStyles.image}
-          source={{uri: props.route.params.src}}
-        />
-      </View>
+      <Image
+        style={ImageScreenStyles.image}
+        source={{uri: props.route.params.src}}
+      />
     </View>
   );
 };

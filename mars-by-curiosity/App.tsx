@@ -6,7 +6,6 @@ import {RoverCameraContext, DateCameraContext} from "src/context/Context";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    DosisLight: require("assets/fonts/Dosis-ExtraLight.ttf"),
     DosisRegular: require("assets/fonts/Dosis-Regular.ttf"),
     DosisBold: require("assets/fonts/Dosis-SemiBold.ttf"),
   });

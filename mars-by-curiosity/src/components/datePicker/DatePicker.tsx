@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {Text, View, TouchableOpacity, TextInput, Platform} from "react-native";
-import DateTimePicker from "@react-native-community/datetimepicker";
+import DateTimePicker, {DateTimePickerEvent} from "@react-native-community/datetimepicker";
 import {DatePickerStyles} from "src/components/datePicker/DatePickerStyles";
 import {currentDate, getDate} from "src/utils/getDate";
 import {CalendarIcon} from "src/assets/icons/calendar";
@@ -12,7 +12,7 @@ export const DatePickerComponent = () => {
 
   const {date, setDate} = useDateCamera();
 
-  const onChange = (event, selectDate) => {
+  const onChange = (event: DateTimePickerEvent, selectDate: Date | undefined) => {
     const selectedDate = selectDate || date;
     setShow(Platform.OS === "ios");
     setDate(selectedDate);

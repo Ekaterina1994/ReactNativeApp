@@ -4,14 +4,13 @@ import {DropdownStyles} from "./DropdownStyles";
 import {useRoverCamera} from "src/context/Context";
 
 const data = [
-  {label: "Item 1", value: "1"},
-  {label: "Item 2", value: "2"},
-  {label: "Item 3", value: "3"},
-  {label: "Item 4", value: "4"},
-  {label: "Item 5", value: "5"},
-  {label: "Item 6", value: "6"},
-  {label: "Item 7", value: "7"},
-  {label: "Item 8", value: "8"},
+  {label: "Front Hazard Avoidance Camera", value: "Front Hazard Avoidance Camera"},
+  {label: "Rear Hazard Avoidance Camera", value: "Rear Hazard Avoidance Camera"},
+  {label: "Mast Camera", value: "Mast Camera"},
+  {label: "Chemistry and Camera Complex", value: "Chemistry and Camera Complex"},
+  {label: "Mars Hand Lens Imager", value: "Mars Hand Lens Imager"},
+  {label: "Mars Descent Imager", value: "Mars Descent Imager"},
+  {label: "Navigation Camera", value: "Navigation Camera"},
 ];
 
 export const DropdownComponent = () => {
@@ -44,7 +43,6 @@ export const DropdownComponent = () => {
             setCamera(item.value);
           }}
         />
-        {/* <DropdownIcon /> */}
       </TouchableOpacity>
     </View>
   );

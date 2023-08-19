@@ -1,4 +1,4 @@
-import {StyleSheet} from "react-native";
+import {Dimensions, StyleSheet} from "react-native";
 
 export const CameraScreenStyles = StyleSheet.create({
   container: {
@@ -6,13 +6,10 @@ export const CameraScreenStyles = StyleSheet.create({
     width: "100%",
     height: "100%",
     flexDirection: "column",
+    justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#DCCEBE",
     paddingHorizontal: 16,
-  },
-  headerWrapper: {
-    paddingTop: 42,
-    paddingHorizontal: 10,
   },
   header: {
     display: "flex",
@@ -20,7 +17,10 @@ export const CameraScreenStyles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    // height: 46,
+    paddingHorizontal: 10,
+    paddingTop: 42,
+    paddingBottom: 16,
+    height: 104,
   },
   titleWrapper: {
     display: "flex",
@@ -32,10 +32,27 @@ export const CameraScreenStyles = StyleSheet.create({
   title: {
     fontFamily: "DosisBold",
     fontSize: 18,
-    paddingBottom: 0,
+    lineHeight: 22,
   },
   text: {
-    fontFamily: "DosisBold",
-    fontSize: 14,
+    fontFamily: "DosisRegular",
+    fontSize: 13,
+    lineHeight: 22,
+  },
+  contentContainer: {
+    flex: 1,
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
+  imageWrapper: {
+    borderRadius: 8,
+    overflow: "hidden",
+    margin: 4,
+    width: (Dimensions.get("window").width / 3) - 18,
+    height: (Dimensions.get("window").height / 6) - 9,
+  },
+  image: {
+    width: (Dimensions.get("window").width / 3) - 18,
+    height: (Dimensions.get("window").height / 6) - 9,
   },
 });

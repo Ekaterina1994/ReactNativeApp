@@ -4,7 +4,13 @@ import {SelectionScreen} from "src/screens/selectionScreen/SelectionScreen";
 import {CameraScreen} from "src/screens/cameraScreen/CameraScreen";
 import {ImageScreen} from "src/screens/imageScreen/ImageScreen";
 
-const Stack = createNativeStackNavigator();
+export type RootStackParamList = {
+  SelectionScreen: undefined;
+  CameraScreen: undefined;
+  ImageScreen: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const Navigate = () => {
   return (
@@ -13,25 +19,14 @@ export const Navigate = () => {
         <Stack.Screen
           name="SelectionScreen"
           component={SelectionScreen}
-          // options={{headerShown: false}}
-          // options={{
-          //   title: "Select Camera and Date",
-          //   headerStyle: {backgroundColor: "#DCCEBE"},
-          //   headerTintColor: "#000",
-          //   headerTitleStyle: {fontFamily: "DosisBold", fontSize: 18},
-          //   headerTitleAlign: "center",
-          //   headerShadowVisible: false,
-          // }}
         />
         <Stack.Screen
           name="CameraScreen"
           component={CameraScreen}
-          options={{title: "Camera Screen!!!!"}}
         />
         <Stack.Screen
           name="ImageScreen"
           component={ImageScreen}
-          options={{title: "Image Screen!!!!"}}
         />
       </Stack.Navigator>
     </NavigationContainer>
