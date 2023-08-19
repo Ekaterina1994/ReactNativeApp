@@ -3,11 +3,11 @@ import {useFonts} from "expo-font";
 import AppLoading from "expo-app-loading";
 import {Navigate} from "src/navigate/Navigate";
 import {RoverCameraContext, DateCameraContext} from "src/context/Context";
-import {currentDate} from "src/utils/getDate";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
     DosisLight: require("assets/fonts/Dosis-ExtraLight.ttf"),
+    DosisRegular: require("assets/fonts/Dosis-Regular.ttf"),
     DosisBold: require("assets/fonts/Dosis-SemiBold.ttf"),
   });
 

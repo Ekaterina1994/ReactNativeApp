@@ -1,36 +1,21 @@
-import {StyleSheet} from "react-native";
+import {Dimensions, StyleSheet} from "react-native";
 
 export const ImageGalleryStyles = StyleSheet.create({
-  container: {
-    // flex: 1,
+  container: {paddingTop: 12},
+  contentContainer: {
+    justifyContent: "flex-start",
     flexDirection: "row",
-    // alignItems: "center",
-    // justifyContent: "center",
-    // display: "flex",
-    // width: "100%",
-    // backgroundColor: "red",
+    flexWrap: "wrap",
   },
-  wrapper: {
-    // flex: 1,
-    display: "flex",
-    flexDirection: "row",
-    // width: "100%",
-    // height: "100%",
-    borderColor: "black",
-    borderWidth: 2,
-    // padding: 8,
-    // flex: 1,
-  },
-  imageList: {
-    // flex: 1,
-    display: "flex",
-    flexDirection: "column",
-    height: "100%",
-    width: "100%",
-    backgroundColor: "yellow",
+  imageWrapper: {
+    padding: 4,
+    borderRadius: 8,
+    overflow: "hidden",
   },
   image: {
-    width: "100%",
-    height: "100%",
+    width: (Dimensions.get("window").width / 3) - 16,
+    height: (Dimensions.get("window").height / 6) - 40,
+    // width: 110,
+    // height: 110,
   },
 });

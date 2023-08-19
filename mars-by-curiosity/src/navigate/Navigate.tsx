@@ -3,7 +3,6 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {SelectionScreen} from "src/screens/selectionScreen/SelectionScreen";
 import {CameraScreen} from "src/screens/cameraScreen/CameraScreen";
 import {ImageScreen} from "src/screens/imageScreen/ImageScreen";
-// import {M} from "src/screens/M";
 
 const Stack = createNativeStackNavigator();
 
@@ -12,7 +11,7 @@ export const Navigate = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen
-          name="Select Camera and Date"
+          name="SelectionScreen"
           component={SelectionScreen}
           // options={{headerShown: false}}
           // options={{

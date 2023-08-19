@@ -1,4 +1,4 @@
-import {Text, View, ImageBackground} from "react-native";
+import {Text, View, ImageBackground, TouchableOpacity} from "react-native";
 import {CameraScreenStyles} from "src/screens/cameraScreen/CameraScreenStyles";
 import {NavigationProp} from "@react-navigation/native";
 import {BackIcon} from "src/assets/icons/back";
@@ -18,14 +18,17 @@ export const CameraScreen = ({navigation}: any) => {
   const {date} = useDateCamera();
 
   const loadScene = () => {
-    navigation.navigate("ImageScreen");
+    navigation.navigate("SelectionScreen");
   };
 
   return (
     <View style={CameraScreenStyles.container}>
       <View style={CameraScreenStyles.headerWrapper}>
         <View style={CameraScreenStyles.header}>
-          <BackIcon />
+          <TouchableOpacity onPress={loadScene}>
+            <BackIcon />
+          </TouchableOpacity>
+
           <View style={CameraScreenStyles.titleWrapper}>
             <Text style={CameraScreenStyles.title}>
               {camera}
@@ -36,7 +39,8 @@ export const CameraScreen = ({navigation}: any) => {
           </View>
         </View>
       </View>
-      <ImageGallery />
+      <ImageGallery navigate={navigation.navigate} />
+      {/* <ImageGallery /> */}
     </View>
   );
 };

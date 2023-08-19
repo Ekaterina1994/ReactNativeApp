@@ -1,11 +1,13 @@
 import {useState, useEffect} from "react";
-import {Text, TouchableOpacity, View, FlatList, Image} from "react-native";
-import {ListItem} from "react-native-elements";
+import {Text, TouchableOpacity, View, FlatList, Image, ScrollView} from "react-native";
 import {ImageGalleryStyles} from "src/components/imageGallery/ImageGalleryStyles";
 
-const ACTIVE_OPACITY_VALUE = 0.8;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const ImageGallery = (props) => {
+  const loadScene = () => {
+    // navigation.navigate("ImageScreen");
+  };
 
-export const ImageGallery = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -20,23 +22,19 @@ export const ImageGallery = () => {
 
   useEffect(() => {
     fetchData();
-    // const photo = data.photos[0].img_src;
-    // alert(`${photo}`);
   }, []);
 
   const renderItem = (itemSrc: string, itemId: string) => {
     return (
-      <View style={ImageGalleryStyles.wrapper}>
+      <TouchableOpacity
+        style={ImageGalleryStyles.imageWrapper}
+        onPress={() => props.navigate("ImageScreen", {id: itemId, src: itemSrc})}
+      >
         <Image
-          style={{flexDirection: "row", width: 100, height: 100}}
+          style={ImageGalleryStyles.image}
           source={{uri: itemSrc}}
         />
-        {/* <View>
-          <Text>
-            {itemId}
-          </Text>
-        </View> */}
-      </View>
+      </TouchableOpacity>
     );
   };
 
@@ -47,7 +45,8 @@ export const ImageGallery = () => {
           Loading...
         </Text> :
         (<FlatList
-          style={ImageGalleryStyles.wrapper}
+          contentContainerStyle={ImageGalleryStyles.contentContainer}
+          numColumns={3}
           data={data}
           keyExtractor={(item) => item.id}
           renderItem={({item}) => (renderItem(item.img_src, item.id))}
